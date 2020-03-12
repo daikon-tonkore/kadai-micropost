@@ -9,5 +9,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
+    Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 }
