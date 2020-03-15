@@ -9,6 +9,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
-    Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function counts($user) {
+        $count_microposts = $user->microposts()->count();
+
+        return [
+            'count_microposts' => $count_microposts,
+        ];
+    }
 }
