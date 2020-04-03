@@ -98,9 +98,9 @@ class User extends Authenticatable
         // 既にお気に入り登録しているかの確認
         $exist = $this->is_registering($micropostId);
         // 相手が自分自身ではないかの確認
-        $its_me = $this->id == $micropostId;
+        //$its_me = $this->id == $micropostId;
         
-        if ($exist || $its_me) {
+        if ($exist == true) {
             // 既にお気に入り登録していれば何もしない
             return false;
         } else {
@@ -115,9 +115,9 @@ class User extends Authenticatable
         // 既にお気に入り登録しているかの確認
         $exist = $this->is_registering($micropostId);
         // 相手が自分自身かどうかの確認
-        $its_me = $this->id == $micropostId;
-    
-        if ($exist && !$its_me) {
+        //$its_me = $this->id == $micropostId;
+        
+        if ($exist == true) {
             // 既にお気に入り登録していればフォローを外す
             $this->favorites()->detach($micropostId);
             return true;
